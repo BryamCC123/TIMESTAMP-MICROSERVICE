@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timestamp Microservice</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Timestamp Microservice</h1>
+            <p class="subtitle">Convert dates to UNIX timestamps and UTC strings with this simple API service</p>
+        </header>
+        
+        <div class="content">
+            <div class="api-container">
+                <div class="api-example">
+                    <h3>API Usage</h3>
+                    <p>Send a GET request to:</p>
+                    <div class="code">
+                        <span class="method">GET</span> <span class="endpoint">/api/:date?</span>
+                    </div>
+                    
+                    <p>Where <code>:date?</code> is either:</p>
+                    <ul>
+                        <li>A valid date string (e.g., "2015-12-25")</li>
+                        <li>A UNIX timestamp (e.g., 1451001600000)</li>
+                        <li>Empty - returns current time</li>
+                    </ul>
+                </div>
+                
+                <div class="api-example">
+                    <h3>Example Response</h3>
+                    <p>For a valid date:</p>
+                    <div class="code">
+                        {<br>
+                        &nbsp; "unix": 1451001600000,<br>
+                        &nbsp; "utc": "Fri, 25 Dec 2015 00:00:00 GMT"<br>
+                        }
+                    </div>
+                    
+                    <p>For an invalid date:</p>
+                    <div class="code">
+                        { "error": "Invalid Date" }
+                    </div>
+                </div>
+            </div>
+            
+            <div class="test-area">
+                <h3>Test the API</h3>
+                <div class="input-group">
+                    <input type="text" id="dateInput" placeholder="Enter a date or timestamp (or leave empty for current time)">
+                    <button id="testButton">Test API</button>
+                </div>
+                
+                <div class="result">
+                    <pre id="apiResult">Results will appear here...</pre>
+                </div>
+            </div>
+            
+            <div class="current-time">
+                <h3>Current Time</h3>
+                <p id="currentUnix">UNIX: <span id="unixValue"></span></p>
+                <p id="currentUTC">UTC: <span id="utcValue"></span></p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Timestamp Microservice &copy; 2023</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
